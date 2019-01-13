@@ -1,0 +1,9 @@
+# change docker socket path
+- type: replace
+  path: /items/kind=DaemonSet/spec/template/spec/volumes/name=docker-socket/hostPath/path
+  value: /var/vcap/sys/run/docker/docker.sock
+
+# disable weave net integration
+- type: replace
+  path: /items/kind=DaemonSet/spec/template/spec/containers/name=scope-agent/args/0:before
+  value: "--weave=false"
